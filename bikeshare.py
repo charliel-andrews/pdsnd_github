@@ -123,15 +123,15 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    # TO DO: display most commonly used start station
+    # display most commonly used start station
     popular_start = df['Start Station'].mode()[0]
     print('Most popular start station is:', popular_start)
 
-    # TO DO: display most commonly used end station
+    # display most commonly used end station
     popular_end = df['End Station'].mode()[0]
     print('Most popular end station is:', popular_end)
 
-    # TO DO: display most frequent combination of start station and end station trip
+    # display most frequent combination of start station and end station trip
     df['Start and End Station'] = df['Start Station']+' to '+df['End Station']
     popular_combo = df['Start and End Station'].mode()[0]
     print('Most popular combination of stations:', popular_combo)
@@ -147,11 +147,11 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-    # TO DO: display total travel time
+    # display total travel time
     total_duration = df['Trip Duration'].sum()
     print('The total duration of trips under these filters in seconds:', total_duration)
 
-    # TO DO: display mean travel time
+    # display mean travel time
     mean_duration = df['Trip Duration'].mean()
     print('The average duration of trips under these filters in seconds:', mean_duration)
 
@@ -165,18 +165,18 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    # TO DO: Display counts of user types
+    # display counts of user types
     user_types = df['User Type'].value_counts()
     print('These are the user type counts:', user_types)
 
-    # TO DO: Display counts of gender
+    # display counts of gender
     try:
         gender_types = df['Gender'].value_counts()
         print('These are the gender counts:', gender_types)
     except KeyError:
         print('Gender data is not available for this city!')
 
-    # TO DO: Display earliest, most recent, and most common year of birth
+    # display earliest, most recent, and most common year of birth
     try:
         earliest_year = df['Birth Year'].min()
         latest_year = df['Birth Year'].max()
