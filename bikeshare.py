@@ -20,26 +20,26 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
-    # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
+
+    # Get user input for city
     while True:
         city = input('Which city\'s information would you like to investigate?').lower()
         if city not in CITIES:
             print('Sorry, this is not one of the cities available in our database. Please enter again.')
-     
+
         else:
             break
 
-    # TO DO: get user input for month (all, january, february, ... , june)
+    # Get user input for month
     while True:
         month = input('Which month would you like to look at (say all if you want!)').lower()
         if month not in MONTHS:
             print('Sorry, this is not one of the months available in our database. Please enter again.')
-            
+
         else:
             break
 
-    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
+    # Get user input for day
     while True:
         day = input('And finally, which day of the week would you like to look at (say all if you want!)')
         if day not in DAYS:
@@ -51,7 +51,7 @@ def get_filters():
     print('-'*40)
     return city, month, day
 
-        
+
 
 def load_data(city, month, day):
     """
@@ -80,7 +80,7 @@ def load_data(city, month, day):
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
-    
+
         # filter by month to create the new dataframe
         df = df[df['month'] == month]
 
@@ -88,7 +88,7 @@ def load_data(city, month, day):
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
-    
+
     return df
 
 
@@ -108,7 +108,7 @@ def time_stats(df):
 
     # TO DO: display the most common start hour
     """ Extract the hour from the Start Time to create an hour column, then find the most popular. """
-    
+
     df['hour'] = df['Start Time'].dt.hour
     popular_hour = df['hour'].mode()[0]
     print('Most Common Start Hour:', popular_hour)
@@ -126,11 +126,11 @@ def station_stats(df):
     # TO DO: display most commonly used start station
     popular_start = df['Start Station'].mode()[0]
     print('Most popular start station is:', popular_start)
-    
+
     # TO DO: display most commonly used end station
     popular_end = df['End Station'].mode()[0]
     print('Most popular end station is:', popular_end)
-    
+
     # TO DO: display most frequent combination of start station and end station trip
     df['Start and End Station'] = df['Start Station']+' to '+df['End Station']
     popular_combo = df['Start and End Station'].mode()[0]
