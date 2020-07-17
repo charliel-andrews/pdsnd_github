@@ -3,10 +3,10 @@ import pandas as pd
 import numpy as np
 
 CITY_DATA = { 'chicago': 'chicago.csv',
-              'new york city': 'new_york_city.csv',
+              'new york': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
-CITIES = ['chicago', 'new york city', 'washington']
+CITIES = ['chicago', 'new york', 'washington']
 MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'all']
 DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'all']
 
@@ -190,8 +190,8 @@ def user_stats(df):
     # Ask if the user wants to see 5 lines of raw data and continue until the answer is no
     raw_data = 5
     while True:
-        more_data = input('Would you like to see some of the raw data? Please say yes or no.').lower()
-        if (more_data == 'yes'):
+        more_data = input('Would you like to see some of the raw data? Enter y or n.').lower()
+        if (more_data == 'y'):
             print(df.iloc[raw_data-5:raw_data], '\n')
             raw_data += 5
             continue
@@ -209,8 +209,8 @@ def main():
         trip_duration_stats(df)
         user_stats(df)
 
-        restart = input('\nWould you like to restart? Enter yes or no.\n')
-        if restart.lower() != 'yes':
+        restart = input('\nWould you like to restart? Enter y or n.\n')
+        if restart.lower() != 'y':
             break
 
 
